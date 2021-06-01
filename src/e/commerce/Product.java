@@ -132,23 +132,24 @@ class Product {
     
     //methot  here
 //   that reduces the number of stocks as much as the number of products purchased and controls the stock number.
-    public String stockControl(){
-        if (getProductStockInformation()==0) {
-         
-            return "stoklarımızda bulunamamıştır en kısa sürede stokalarımız yenilenecektir";
+    public boolean stockControl(int count){
+        if (getProductStockInformation()>count) {
+            System.out.println("sepete ekleme başarılı");
+            return true;
         }
-        return "ürünlerimiz "+ getProductName() +" Kalan stok adetimiz : " + getProductStockInformation();
+        System.out.println("sepete ekleme başarısız elimizde istediğiniz kadar stok bulunamadı tekrar dene");
+        return false;
      
     }
-    public void stockReduce(int orderCount){
+    public boolean stockReduce(int orderCount){
         if (getProductStockInformation()>=orderCount) {
             int currentStock = getProductStockInformation() - orderCount;
             setProductStockInformation(currentStock);
             
-            return;
+            return true;
         }
         System.out.println("stok adetinizi karşılayamıyoruz");
-        
+        return false;
     }
     
 }

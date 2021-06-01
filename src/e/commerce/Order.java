@@ -69,29 +69,27 @@ public class Order {
         this.orderedCreditCard = orderedCreditCard;
     }
     
-     public void purchased(ArrayList<Product> products){
+     public boolean purchased(ArrayList<Product> products){
          
         for (int i = 0; i < products.size() ; i++) {
             for (int j = 0; j < getOrderedProduct().size(); j++) {
                 if (products.get(i).getProductName().equals(getOrderedProduct().get(j).getProductName())) {
-                    products.get(i).stockReduce(getOrderedProduct().get(j).getProductStockInformation());
+                    if (!products.get(i).stockReduce(getOrderedProduct().get(j).getProductStockInformation())) {
+                        System.out.println("başarısız işlem");
+                        return false;
+                    }
+                    
                 }
                 
             }
           
         }
          System.out.println("iyi günlerde kullanın");
+        return true;
+        
        
     }
-//    public void purchased(){
-//        for (int i = 0; i < getOrderedProduct().size() ; i++) {
-//          getOrderedProduct().get(i).stockReduce(orderCount);
-//        }
-//        getOrderingUser().setProductsOrdered(orderedProduct);
-//    }
-//     public void purchased(Product selctdProduct){
-//         selctdProduct.stockReduce(0);
-//     }
+
  
 }
 //Ek olarak, burada Ürün sınıfının ürün stok bilgilerini 

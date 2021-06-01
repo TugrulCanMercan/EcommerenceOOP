@@ -5,7 +5,10 @@
  */
 package e.commerce;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,20 +23,27 @@ public class Test {
     }
     
     public void createUser(String name,String surName,String username,String DateOfBirth,String Password,String EmailAdress
-    ,String HomeAndWorkAdress){
+    ,String HomeAndWorkAdress,String creditCardNumber,String securityCode,String expirationDateOfTheCreditCards) throws ParseException{
        
         User newUser = new User();
         newUser.setUserName(username);
         newUser.setName(name);
         newUser.setSurName(surName);
-        newUser.setDateOfBirth(DateOfBirth);
+        Date Dateofbirth = new SimpleDateFormat("dd/MM/yyyy").parse(DateOfBirth);
+        newUser.setDateOfBirth(Dateofbirth);
+       
+      
         newUser.setPassword(Password);
         newUser.setEmailAdress(EmailAdress);
         newUser.setHomeAndWorkAdress(HomeAndWorkAdress);
-        newUser.setCreditCard(new CreditCard(0, newUser, 0, 0));
+        newUser.setCreditCard(new CreditCard(creditCardNumber, newUser, securityCode, expirationDateOfTheCreditCards));
         users.add(newUser);
         
     }
+    
+    
+    
+    
     public void createProduct(String productName,String productColor,String ProductCategory,String ProductDesscriptionInformation
     ,int ProductStockInformation,int ProductWeight){
         Product newProduct = new Product();

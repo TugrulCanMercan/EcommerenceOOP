@@ -5,21 +5,28 @@
  */
 package e.commerce;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author tugrulcanmercan
  */
 class CreditCard {
-    private int creditCardNumber;
+    private String creditCardNumber;
     private User creditCardUser;
-    private int securityCode;
-    private int expirationDateOfTheCreditCards;
+    private String securityCode;
+    private Date expirationDateOfTheCreditCards;
     
-    public CreditCard(int creditCardNumber,User creditCardUser,int securityCode,int expirationDateOfTheCreditCards){
+    public CreditCard(String creditCardNumber,User creditCardUser,String securityCode,String expirationDateOfTheCreditCards) throws ParseException{
         this.creditCardNumber = creditCardNumber;
         this.creditCardUser = creditCardUser;
         this.securityCode = securityCode;
-        this.expirationDateOfTheCreditCards = expirationDateOfTheCreditCards;
+        
+        Date expirationDateOfTheCreditCard = new SimpleDateFormat("dd/MM/yyyy").parse(expirationDateOfTheCreditCards);
+        
+        this.expirationDateOfTheCreditCards = expirationDateOfTheCreditCard;
     }
     public CreditCard(){
         
@@ -28,14 +35,14 @@ class CreditCard {
     /**
      * @return the creditCardNumber
      */
-    public int getCreditCardNumber() {
+    public String getCreditCardNumber() {
         return creditCardNumber;
     }
 
     /**
      * @param creditCardNumber the creditCardNumber to set
      */
-    public void setCreditCardNumber(int creditCardNumber) {
+    public void setCreditCardNumber(String creditCardNumber) {
         this.creditCardNumber = creditCardNumber;
     }
 
@@ -56,29 +63,30 @@ class CreditCard {
     /**
      * @return the securityCode
      */
-    public int getSecurityCode() {
+    public String getSecurityCode() {
         return securityCode;
     }
 
     /**
      * @param securityCode the securityCode to set
      */
-    public void setSecurityCode(int securityCode) {
+    public void setSecurityCode(String securityCode) {
         this.securityCode = securityCode;
     }
 
     /**
      * @return the expirationDateOfTheCreditCards
      */
-    public int getExpirationDateOfTheCreditCards() {
+    public Date getExpirationDateOfTheCreditCards() {
         return expirationDateOfTheCreditCards;
     }
 
     /**
      * @param expirationDateOfTheCreditCards the expirationDateOfTheCreditCards to set
      */
-    public void setExpirationDateOfTheCreditCards(int expirationDateOfTheCreditCards) {
-        this.expirationDateOfTheCreditCards = expirationDateOfTheCreditCards;
+    public void setExpirationDateOfTheCreditCards(String expirationDateOfTheCreditCards) throws ParseException {
+        Date expirationDateOfTheCreditCard = new SimpleDateFormat("dd/MM/yyyy").parse(expirationDateOfTheCreditCards);
+        this.expirationDateOfTheCreditCards = expirationDateOfTheCreditCard;
     }
     //methots here
     

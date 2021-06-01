@@ -6,6 +6,7 @@
 package e.commerce;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -15,15 +16,16 @@ public class User {
     private String userName;
     private String name;
     private String surName;
-    private String dateOfBirth;      
+    private Date dateOfBirth;      
     private String password;       
     private String emailAdress;       
     private String homeAndWorkAdress;       
-    private ArrayList<Product> productsOrdered; 
+    private ArrayList<Order> productsOrdered; 
     private ArrayList<Product> favoriteProducts;
     private CreditCard creditCard;
     public User(){
-        
+        this.productsOrdered = new ArrayList<Order>();
+        this.favoriteProducts = new ArrayList<Product>();
     }
     
 //    public User(String userName,String name,String surName,String dateOfBirth,String password,String emailAdress,
@@ -86,14 +88,14 @@ public class User {
     /**
      * @return the dateOfBirth
      */
-    public String getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
     /**
      * @param dateOfBirth the dateOfBirth to set
      */
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -142,15 +144,15 @@ public class User {
     /**
      * @return the productsOrdered
      */
-    public List<Product> getProductsOrdered() {
+    public List<Order> getProductsOrdered() {
         return productsOrdered;
     }
 
     /**
      * @param productsOrdered the productsOrdered to set
      */
-    public void setProductsOrdered(ArrayList<Product> productsOrdered) {
-        this.productsOrdered = productsOrdered;
+    public void setProductsOrdered(Order productsOrdered) {
+        this.productsOrdered.add(productsOrdered);
     }
 
     /**
@@ -163,8 +165,8 @@ public class User {
     /**
      * @param favoriteProducts the favoriteProducts to set
      */
-    public void setFavoriteProducts(ArrayList<Product> favoriteProducts) {
-        this.favoriteProducts = favoriteProducts;
+    public void setFavoriteProducts(Product favoriteProducts) {
+        this.favoriteProducts.add(favoriteProducts);
     }
 
     /**
@@ -180,7 +182,8 @@ public class User {
     public void setCreditCard(CreditCard creditCard) {
         this.creditCard = creditCard;
     }
-    
+
+  
 
    
 }
